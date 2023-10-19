@@ -1,7 +1,8 @@
 # 게임 월드 모듈
+import grass
 
 # 게임 월드 표현
-world = [ [], [] ]         # 게임 월드는 리스트로 표현
+world = [ [], [], [] ]         # 게임 월드는 리스트로 표현
 
 # 게임 월드에 객체 담기
 def add_object(o, depth = 0):
@@ -18,7 +19,12 @@ def update():
 def render():
     for layer in world:
         for o in layer:
-            o.draw()
+            if o == grass and layer == 0:
+                o.draw(400,30)
+            elif o == grass and layer == 2:
+                o.draw(400, 70)
+            else:
+                o.draw()
 
 # 객체 삭제
 def remove_object(o):
